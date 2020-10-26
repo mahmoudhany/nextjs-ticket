@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./index.css">
+  <title>Next.js Ticket</title>
+</head>
+<body>
+  <div class="ticket__wrapper" id="ticket">
+    <div class="ticket__wrapper__inner">
+      <div class="left"></div>
+      <div class="content">
+        <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione accusamus asperiores praesentium corporis
+          molestias numquam sequi dolorem ad. Itaque laboriosam vero velit quis perspiciatis non minus illo odio alias
+          earum.</h3>
+      </div>
+      <div class="right"></div>
+    </div>
+  </div>
+  <script>
+    const ticketEl = document.getElementById("ticket")
+    const { x, y, width, height } = ticketEl.getBoundingClientRect();
+
+    ticketEl.addEventListener('mousemove', (e) => {
+      const centerPoint = { x: x + width / 2, y: y + height / 2 }
+      const degreeY = (e.clientX - centerPoint.x) * 0.01;
+      const degreeX = (e.clientY - centerPoint.y) * 0.01;
+      ticketEl.style.transform =
+        `perspective(1000px) rotateX(${degreeX}deg) rotateY(${degreeY}deg)`;
+      console.log(e);
+    })
+  </script>
+</body>
+</html>
